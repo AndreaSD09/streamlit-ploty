@@ -56,3 +56,13 @@ df_anio = df_filtrado[df_filtrado["year"] == anio_seleccionado]
 
 st.subheader("Datos filtrados")
 st.dataframe(df_anio)
+
+col1, col2, col3 = st.columns(3)
+
+promedio_vida = df_anio["lifeExp"].mean()
+poblacion_total = df_anio["pop"].sum()
+pib_promedio = df_anio["gdpPercap"].mean()
+
+col1.metric("Expectativa de vida promedio", f"{promedio_vida:,.1f} años")
+col2.metric("Población total", f"{poblacion_total:,.0f}")
+col3.metric("PIB per cápita promedio", f"${pib_promedio:,.0f}")
